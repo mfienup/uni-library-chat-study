@@ -1,0 +1,238 @@
+Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+
+>>> 
+ RESTART: C:\Users\fienup\Desktop\Data\research\ChatLib_2019\ITAL_paper\Scripts_Shared_with_Reviewers_v3\P1_preprocess_data.py 
+Welcome to Phase 1 of the chat analysis which pre-processes a raw chat data .csv file 
+from the LibChat keeping only the 5 columns (with column-headings): 
+Timestamp, Duration (seconds), Initial Question, Message Count, and Transcript. 
+
+Running Phase 1 to pre-process your raw chat data (.csv) will generate four cleaned chat 
+files varying the parts of speech or question-only. 
+1) "onlyQuestionsFile.txt" - consists of only the initial questions asked by the library patrons 
+2) "wholeChatsFile.txt" - consists of the whole cleaned chat transcripts 
+3) "wholeChatsFilePOS_N_ADJ.txt" - consists of only the nouns and adjectives parts-of-speech (POS) 
+4) "wholeChatsFilePOS_N_ADJ_V.txt" - consists of only the nouns, adjectives, and verbs parts-of-speech
+
+
+Step 1. Please input the raw LibChat (.csv) file.
+(For example: "chatFile.csv"): original_without_identifiable_info_chat_transcripts_9942_041015_053119.csv
+
+Step 2. Please input the stop words (.txt) file.
+(For example: "stop_words.txt"): stop_words.txt
+
+
+WARNING:  Depending on the size of your chat data file.  This step might take several minutes.
+Number of initial questions from Initial Question column of .csv: 1062
+Total Question Count: 8852 written to onlyQuestionsFile.txt
+Whole Chats Count: 9146 written to wholeChatsFile.txt
+Whole Chats Count: 9146 written to wholeChatsFilePOS_N_ADJ.txt
+Whole Chats Count: 9146 written to wholeChatsFilePOS_N_ADJ_V.txt
+>>> 
+ RESTART: C:\Users\fienup\Desktop\Data\research\ChatLib_2019\ITAL_paper\Scripts_Shared_with_Reviewers_v3\P2_topic_modeling.py 
+Welcome to Phase 2 which runs the unsupervised topic modeling techniques. 
+
+You should have first run Phase 1 to pre-process your chat data. 
+It would generate cleaned chat files varying the parts of speech or question-only. 
+Files generated are: wholeChatsFile.txt, wholeChatsFilePOS_N_ADJ_V.txt, 
+wholeChatsFilePOS_N_ADJ.txt, and onlyQuestionsFile.txt.
+
+
+Step 1. Please input the pre-processed (.txt) file.
+(For example: "wholeChatsFile.txt"): wholeChatsFile.txt
+
+Step 2. Please specify the number of topics. (suggested range 10-20)
+ 15
+
+Step 3. Please specify the number of words per topics. (suggested range 5-10)
+ 8
+===================================
+
+Performing PyMallet LDA topic modeling -- please wait it might take a couple minutes!
+
+Results for PyMallet LDA  TC-PMI 0.141, TC-LCP -0.557, TC-NZ 0.000:
+article find access how what link email database
+access link article journal find how will campus
+article find search what file attach will link
+check book how desk renew today call hour
+search how find article what type check answer
+book how what class check will question link
+article find research how topic librarian database search
+will how loan search what book request interlibrary
+how room print reserve will click computer log
+search find article google how source what research
+book check will how number hold pick request
+find link how book access article check floor
+how what will find research study time librarian
+book request find loan collection interlibrary how online
+how email will good work what check source
+===================================
+
+Performing LDA topic modeling -- please wait it might take a couple minutes!
+
+Results for LDA  TC-PMI 0.237, TC-LCP -1.007, TC-NZ 0.400:
+campus download site connect building management work hall
+book renew check item today video online return
+print youth collection art printer music floor color
+search review article result bar type click peer
+desk check computer laptop floor circulation tech main
+book check online number copy title floor locate
+contact email collection special school question number university
+answer check place open shortly today hour question
+room reserve study medium password digital group hub
+article database access journal link search file work
+good data learning class professor social base word
+request link access loan log interlibrary click sign
+business state newspaper policy sociology anne woman specific
+student class course faculty member check staff irts
+research librarian paper source cite topic appointment write
+===================================
+
+Performing TF-IDF & LSA topic modeling -- please wait it might take a couple minutes!
+
+Results for TF-IDF & LSA  TC-PMI -0.066, TC-LCP -1.114, TC-NZ 0.267:
+article book search find access link will check 
+renew book article room reserve search journal check 
+room renew reserve book study scheduler loan online 
+renew request loan interlibrary search room review peer 
+loan floor renew interlibrary access request log book 
+book open request print loan renew search interlibrary 
+print floor open color printer hour research pm 
+open hour print search review close peer floor 
+print access renew research loan book librarian open 
+floor article renew book open locate print database 
+article book attach file print database floor check 
+check book desk laptop answer print shortly open 
+answer desk shortly place room database pick circulation 
+review peer search reserve log access campus database 
+database file attach collection access journal research reserve 
+===================================
+
+Performing TF-IDF & pLSA topic modeling -- please wait it might take a couple minutes!
+
+Results for TF-IDF & pLSA  TC-PMI 0.312, TC-LCP -0.796, TC-NZ 0.000:
+article link good doe search class answer author
+book check number renew online today copy hold
+reserve room study digital medium hub camera people
+search bar book homepage click type onesearch result
+access link click loan interlibrary account request log
+good chat contact campus email today center online
+access print campus computer link doe click log
+article access attach file journal title amp google
+librarian research email contact appointment question paper consultation
+today open hour close awesome pm time doe
+check answer place shortly doe question long movie
+floor collection locate number special main art area
+desk circulation student hold laptop long checkout minute
+database access journal review research az paper peer
+link cite file attach work send click apa
+>>> 
+ RESTART: C:\Users\fienup\Desktop\Data\research\ChatLib_2019\ITAL_paper\Scripts_Shared_with_Reviewers_v3\P3_semi_supervised_topic_modeling.py 
+Welcome to Phase 3 which runs the semi-supervised topic modeling techniques. 
+
+You should have first run Phase 1 to pre-process your chat data. 
+It would generate cleaned chat files varying the parts of speech or question-only. 
+Files generated are: wholeChatsFile.txt, wholeChatsFilePOS_N_ADJ_V.txt, 
+wholeChatsFilePOS_N_ADJ.txt, and onlyQuestionsFile.txt.
+
+You could have also run Phase 2 to execute unsupervised topic modeling techniques. 
+It would generate files: possible_2_word_anchors.txt and possible_3_word_anchors.txt which 
+you might use to create a text-file (.txt) with anchors one per line.
+
+Step 1. Please input the pre-processed (.txt) file.
+(For example: "wholeChatsFile.txt"): wholeChatsFile.txt
+
+Step 2. Please input the anchors/seeds (.txt) file.
+(For example: "anchors.txt"): anchors.txt
+
+Step 3. Please specify the number of topics. (suggested range 10-20)
+ 15
+
+Step 4. Please specify the number of words per topics. (suggested range 5-10)
+ 8
+===================================
+
+Performing GuidedLDA topic modeling -- please wait it might take a couple minutes!
+INFO:lda:n_documents: 9131
+INFO:lda:vocab_size: 15747
+INFO:lda:n_words: 309120
+INFO:lda:n_topics: 15
+INFO:lda:n_iter: 100
+INFO:lda:<0> log likelihood: -3519204
+INFO:lda:<20> log likelihood: -2312869
+INFO:lda:<40> log likelihood: -2270896
+INFO:lda:<60> log likelihood: -2253715
+INFO:lda:<80> log likelihood: -2242685
+INFO:lda:<99> log likelihood: -2235929
+
+Results for GuidedLDA  TC-PMI 0.162, TC-LCP -0.560, TC-NZ 0.000:
+request book loan interlibrary will how link check
+check how book today will renew hour open
+floor book how find where locate will desk
+room how reserve check desk will study medium
+journal article search find how access will what
+article find search how what database will link
+access link article log will work campus how
+research librarian find how what source will article
+book find check how collection what will number
+book find check how online what link author
+how student email contact question check will what
+find how collection will special contact archive university
+print how printer color computer will document student
+search book how find will website what online
+student article email find what work chat file
+===================================
+
+Performing CorEx topic modeling -- please wait it might take a couple minutes!
+
+CorEx Topics with no anchors:
+Topic #1: article, search, find, topic, journal, research, result, google
+Topic #2: librarian, contact, email, appointment, who, consultation, will, go
+Topic #3: click, left, side, bar, button, hand, homepage, option
+Topic #4: log, access, campus, catid, account, login, password, sign
+Topic #5: desk, floor, room, number, hour, circulation, call, reserve
+Topic #6: loan, interlibrary, request, illiad, inter, bookbook, chapterarticle, fill
+Topic #7: shortly, place, answer, check, purdue, cite, owl, apa
+Topic #8: file, attach, what, thing, helpful, problem, bit, people
+Topic #9: specific, title, american, author, publish, reference, resource, example
+Topic #10: full, text, work, education, read, school, teacher, professor
+Topic #11: hold, time, help, week, long, minute, staff, class
+Topic #12: copy, online, physical, version, amp, volume, doe, instruction
+Topic #13: print, printer, color, printing, black, white, cost, charge
+Topic #14: database, az, ebsco, data, word, base, download
+Topic #15: link, send, pdf, follow, include, second, window, host
+
+CorEx Topics with anchors:
+Topic #1: request, loan, interlibrary, illiad, form, submit, inter, fill
+Topic #2: today, time, hour, open, pm, close, sunday, midnight
+Topic #3: research, librarian, consultation, appointment, set, reference, angela
+Topic #4: digital, hub, camera, medium, room, scheduler, equipment, reserve
+Topic #5: article, journal, access, full, review, peer, attach, file
+Topic #6: article, access, database, text, az, ebsco, proquest, newspaper
+Topic #7: access, campus, account, log, sign, catid, login, password
+Topic #8: research, source, topic, paper, cite, apa, purdue, citation
+Topic #9: number, desk, call, collection, book, circulation, check, phone
+Topic #10: search, find, result, google, type, scholar, specific, title
+Topic #11: email, contact, who, good, go, question, address, chat
+Topic #12: click, left, side, bar, link, button, homepage, onesearch
+Topic #13: work, will, when, send, issue, problem, thing, error
+Topic #14: what, education, amp, class, school, best, social, example
+Topic #15: copy, online, student, read, version, physical, help, doe
+
+Results for CorEx  TC-PMI 0.496, TC-LCP -0.765, TC-NZ 0.000:
+request loan interlibrary illiad form submit inter fill
+today time hour open pm close sunday midnight
+research librarian consultation appointment set reference angela
+digital hub camera medium room scheduler equipment reserve
+article journal access full review peer attach file
+article access database text az ebsco proquest newspaper
+access campus account log sign catid login password
+research source topic paper cite apa purdue citation
+number desk call collection book circulation check phone
+search find result google type scholar specific title
+email contact who good go question address chat
+click left side bar link button homepage onesearch
+work will when send issue problem thing error
+what education amp class school best social example
+copy online student read version physical help doe
+>>> 
